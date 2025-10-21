@@ -1,0 +1,68 @@
+# Postprocessing Rules Configuration
+# This file defines confidence thresholds and layer compatibility rules
+# for the temporal postprocessing module.
+
+# Confidence thresholds for different clothing classes
+# Classes not listed here will use the default threshold
+conf_thresholds:
+  default: 0.6  # Default threshold for all classes
+  
+  # Specific thresholds for clothing classes
+  "short sleeve top": 0.55
+  "long sleeve top": 0.60
+  "long sleeve outwear": 0.65
+  "sweater": 0.60
+  "glasses": 0.50  # Lower threshold for accessories
+  "headwear": 0.55
+
+# Valid layer combinations for co-occurrence logic
+# Defines which clothing items can coexist in the same detection
+# Empty list means the item can coexist with any other item
+valid_layers:
+  # Upper body items that can be layered
+  "short sleeve top":
+    - "long sleeve outwear"  # Can wear jacket over t-shirt
+    - "sweater"              # Can wear sweater over t-shirt
+    - "headwear"             # Can wear hat with t-shirt
+    - "glasses"              # Can wear glasses with t-shirt
+  
+  "long sleeve top":
+    - "long sleeve outwear"  # Can wear jacket over shirt
+    - "sweater"              # Can wear sweater over shirt
+    - "headwear"             # Can wear hat with shirt
+    - "glasses"              # Can wear glasses with shirt
+  
+  "long sleeve outwear":
+    - "short sleeve top"     # Jacket over t-shirt
+    - "long sleeve top"      # Jacket over shirt
+    - "sweater"              # Jacket over sweater
+    - "headwear"             # Can wear hat with jacket
+    - "glasses"              # Can wear glasses with jacket
+  
+  "sweater":
+    - "short sleeve top"     # Sweater over t-shirt
+    - "long sleeve top"      # Sweater over shirt
+    - "long sleeve outwear"  # Jacket over sweater
+    - "headwear"             # Can wear hat with sweater
+    - "glasses"              # Can wear glasses with sweater
+  
+  # Accessories that can be combined with any clothing
+  "glasses":
+    - "short sleeve top"
+    - "long sleeve top"
+    - "long sleeve outwear"
+    - "sweater"
+    - "headwear"
+  
+  "headwear":
+    - "short sleeve top"
+    - "long sleeve top"
+    - "long sleeve outwear"
+    - "sweater"
+    - "glasses"
+
+# Notes:
+# - The postprocessor will log potential conflicts but keep all detections
+# - Confidence thresholds are applied before temporal aggregation
+# - Layer rules are applied after temporal aggregation and persistence
+# - Items not in valid_layers can coexist with any other item (no restrictions)

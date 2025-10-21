@@ -1,0 +1,11 @@
+# Detector Package Requirements
+
+# ML and data processing
+numpy==1.24.3          # For numerical operations
+onnxruntime==1.19.2  # For running ML models
+Pillow==10.4.0      # For image processing
+
+# Utilities
+PyYAML==5.3.1               # For configuration file parsing
+boto3==1.26.165          # For downloading models from S3
+ 
