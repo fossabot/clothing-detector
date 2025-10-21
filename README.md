@@ -1,4 +1,6 @@
 # RT-DETR v2 Clothing Detection Package
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fahosnyyy%2Fclothing-detector.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fahosnyyy%2Fclothing-detector?ref=badge_shield)
+
 
 A lightweight Python package for clothing detection using RT-DETR v2 ONNX model with CLO (Clothing Insulation) value calculation. Simple one-function API that returns JSON results.
 
@@ -94,3 +96,6 @@ detect(img_input=None, conf_thres=0.6, img_size=640, device="cpu")
 | `conf_thres` | float | 0.6 | Confidence threshold (0.0-1.0) |
 | `img_size` | int | 640 | Input image size for processing |
 | `device` | str | "cpu" | Processing device ("cpu" or "gpu") |
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fahosnyyy%2Fclothing-detector.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fahosnyyy%2Fclothing-detector?ref=badge_large)
